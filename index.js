@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
@@ -8,8 +9,9 @@ const userRoutes = require("./routes/users");
 app.options("*", cors());
 app.use(cors());
 
-const mongoURI =
-  "mongodb+srv://oyeniranexcellenced:excelly2024@cluster-crystal.wasylt1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-crystal"; // Replace with your MongoDB URI
+console.log("sds", process.env.DATABASE_URI);
+
+const mongoURI = process.env.DATABASE_URI; // Replace with your MongoDB URI
 mongoose.connect(mongoURI);
 
 mongoose.connection.on("connected", () => {
@@ -39,7 +41,7 @@ app.use((req, res, next) => {
 
 app.use(cors({ origin: "*", credentials: true }));
 
-// app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/", (req, res) => res.send("Testing this works"));
 
 app.use("/users", userRoutes);
 
