@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 
 app.use(cors({ origin: "*", credentials: true }));
 
-app.get("/", (req, res) => res.send("Testing this works"));
+app.get("/test", (req, res) => res.send("Testing this works"));
 
 app.use("/users", userRoutes);
 
