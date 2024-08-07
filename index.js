@@ -9,8 +9,6 @@ const userRoutes = require("./routes/users");
 app.options("*", cors());
 app.use(cors());
 
-console.log("sds", process.env.DATABASE_URI);
-
 const mongoURI = process.env.DATABASE_URI; // Replace with your MongoDB URI
 mongoose.connect(mongoURI);
 
