@@ -45,6 +45,8 @@ app.get("/test", (req, res) => res.send("Testing this works"));
 
 app.use("/users", userRoutes);
 
-app.listen(3000, () => console.log("Server ready on port 3000."));
+app.listen(process.env.PORT || 5300, () =>
+  console.log("Server ready on port 5300.")
+);
 
 module.exports = app;
