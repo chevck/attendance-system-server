@@ -5,6 +5,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/users");
+const adminRoutes = require("./routes/admin");
+const attendanceRoutes = require("./routes/attendance");
 
 app.options("*", cors());
 app.use(cors());
@@ -42,6 +44,8 @@ app.use(cors({ origin: "*", credentials: true }));
 app.get("/test", (req, res) => res.send("Testing this works"));
 
 app.use("/users", userRoutes);
+app.use("/admin", adminRoutes);
+app.use("/attendance", attendanceRoutes);
 
 app.listen(process.env.PORT || 5300, () =>
   console.log("Server ready on port 5300.")
