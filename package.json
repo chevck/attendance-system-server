@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vercel/node": "^3.2.8",
     "express": "^4.19.2"
   }
 }
