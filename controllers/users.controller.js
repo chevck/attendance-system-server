@@ -53,7 +53,7 @@ module.exports = {
       const rows = data.map((el) => ({
         Email: el.email.toLowerCase(),
       }));
-      console.log({ rows });
+      sheet["!cols"] = [{ wch: 50 }];
       const sheet = xlsx.utils.json_to_sheet(rows);
       const workbook = xlsx.utils.book_new();
       xlsx.utils.book_append_sheet(workbook, sheet, "CCW_Emails");

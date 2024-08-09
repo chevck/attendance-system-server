@@ -73,6 +73,8 @@ module.exports = {
       const sheet = xlsx.utils.json_to_sheet(rows);
       const workbook = xlsx.utils.book_new();
       xlsx.utils.book_append_sheet(workbook, sheet, "Attendance");
+      // adjust column width
+      sheet["!cols"] = [{ wch: 20, wch: 30, wch: 20 }];
       const filename = `CCW_Ibadan_attendance_${moment(filterDate).format(
         "Do-MMM-YYYY"
       )}.xlsx`;
