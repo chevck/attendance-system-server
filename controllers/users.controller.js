@@ -41,7 +41,9 @@ module.exports = {
   },
 
   getAll: async (req, res) => {
-    const users = await userModel.find();
+    const users = await userModel.find({
+      email: { $ne: "johndoae@gmail.com" },
+    });
     res.status(200).send(users);
   },
 
