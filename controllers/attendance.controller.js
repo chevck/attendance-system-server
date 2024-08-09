@@ -46,6 +46,7 @@ module.exports = {
           $gte: moment(filterDate).startOf("day").toDate(),
           $lt: moment(filterDate).endOf("day").toDate(),
         },
+        email: { $ne: "johndoae@gmail.com" },
       });
       return res.status(200).send(data);
     } catch (error) {
@@ -68,7 +69,9 @@ module.exports = {
       const rows = data.map((el) => ({
         Name: el.name,
         Email: el.email,
-        "Signed In by": moment(el.signedIn).format("hh:mm a"),
+        "Signed In by": moment(el.signedIn)
+          .subtract(1, "hour")
+          .format("hh:mm a"),
       }));
       const sheet = xlsx.utils.json_to_sheet(rows);
       const workbook = xlsx.utils.book_new();
