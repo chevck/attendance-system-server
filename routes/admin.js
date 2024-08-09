@@ -4,4 +4,6 @@ const router = express.Router();
 
 router.post("/create", adminController.create);
 
+router.get("/verify", adminController.verifyAdmin);
+
 module.exports = router;
