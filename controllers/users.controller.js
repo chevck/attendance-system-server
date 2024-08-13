@@ -42,7 +42,7 @@ module.exports = {
 
   getAll: async (req, res) => {
     const users = await userModel.find({
-      email: { $ne: "johndoae@gmail.com" },
+      // email: { $ne: "johndoae@gmail.com" },
     });
     res.status(200).send(users);
   },
@@ -79,6 +79,30 @@ module.exports = {
         message: "Error downloading ccw emails",
         error,
       });
+    }
+  },
+
+  updateUser: async (req, res) => {
+    try {
+      const { email, _id, newEmail } = req.body;
+      const result = await userModel.findOneAndUpdate(
+        { _id },
+        { email: newEmail },
+        { new: true }
+      );
+      return res.status(200).send(result);
+    } catch (error) {
+      return res.status(500).send("Error updating this user");
+    }
+  },
+
+  deleteUser: async (req, res) => {
+    try {
+      const { email } = req.query;
+      await userModel.findOneAndDelete({ email }, { new: true });
+      res.status(200).send("Deleted Successfully!");
+    } catch (error) {
+      return res.status(500).send("Error deleting this user");
     }
   },
 };
