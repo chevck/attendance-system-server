@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/users");
 const adminRoutes = require("./routes/admin");
 const attendanceRoutes = require("./routes/attendance");
+const tagLineRoutes = require("./routes/taglines");
 
 app.options("*", cors());
 app.use(cors());
@@ -46,6 +47,7 @@ app.get("/test", (req, res) => res.send("Testing this works"));
 app.use("/users", userRoutes);
 app.use("/admin", adminRoutes);
 app.use("/attendance", attendanceRoutes);
+app.use("/taglines", tagLineRoutes);
 
 app.listen(process.env.PORT || 5300, () =>
   console.log("Server ready on port 5300.")

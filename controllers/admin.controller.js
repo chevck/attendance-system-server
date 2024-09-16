@@ -34,4 +34,20 @@ module.exports = {
       return res.status(500).send({ message: "Error verifying admin", error });
     }
   },
+
+  getASeargent: async (req, res) => {
+    const { seargentcode } = req.query;
+    if (!seargentcode)
+      return res.status(400).send("You need to pass in a seargent code");
+    try {
+      const adminUser = await adminModel.findOne({ seargentcode });
+      if (!adminUser)
+        return res
+          .status(404)
+          .send("This is an invalid seargent code. You are not authorized 😒");
+      return res.status(200).json(adminUser);
+    } catch (error) {
+      return res.status(500).send({ message: "Error getting admin", error });
+    }
+  },
 };

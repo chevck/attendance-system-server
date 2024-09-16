@@ -6,4 +6,6 @@ router.post("/create", adminController.create);
 
 router.get("/verify", adminController.verifyAdmin);
 
+router.get("/", adminController.getASeargent);
+
 module.exports = router;
