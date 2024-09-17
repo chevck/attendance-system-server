@@ -3,7 +3,11 @@ const taglineModel = require("../models/tagline.model");
 module.exports = {
   create: async (req, res) => {
     const { mainText, supportingText } = req.body;
-    if (mainText.length < 7 || supportingText.length < 7)
+    if (
+      mainText.length < 7 ||
+      supportingText.length < 7 ||
+      successMessage.length < 7
+    )
       return res
         .status(400)
         .send("Your taglines have to be at least 7 characters long");
