@@ -2,7 +2,7 @@ const taglineModel = require("../models/tagline.model");
 
 module.exports = {
   create: async (req, res) => {
-    const { mainText, supportingText } = req.body;
+    const { mainText, supportingText, successMessage } = req.body;
     if (
       mainText.length < 7 ||
       supportingText.length < 7 ||
